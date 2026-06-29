@@ -1,0 +1,29 @@
+{
+  "app/page.js -> jspdf": {
+    "id": 55172,
+    "files": [
+      "static/chunks/2f0b94e8.ea60580ce276fab2.js",
+      "static/chunks/164f4fb6.cb159650185d15df.js",
+      "static/chunks/781.f1901a6276afa1e3.js"
+    ]
+  },
+  "node_modules/jspdf/dist/jspdf.es.min.js -> canvg": {
+    "id": 11482,
+    "files": [
+      "static/chunks/bc98253f.b8c1bedd066b3212.js",
+      "static/chunks/354.0bc3125573f18c2a.js"
+    ]
+  },
+  "node_modules/jspdf/dist/jspdf.es.min.js -> dompurify": {
+    "id": 82931,
+    "files": [
+      "static/chunks/931.e9104dcb0f23cc3c.js"
+    ]
+  },
+  "node_modules/jspdf/dist/jspdf.es.min.js -> html2canvas": {
+    "id": 54264,
+    "files": [
+      "static/chunks/ad2866b8.635304a38afc0b68.js"
+    ]
+  }
+}
