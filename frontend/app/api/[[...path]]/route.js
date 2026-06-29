@@ -5,15 +5,22 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { DEFAULT_STATE_DATA, DEFAULT_PANEL_TECH, calculateAssessment } from '@/lib/solar/data'
 
-let client, db
+let clientPromise
 async function connectToMongo() {
-  if (!client) {
-    client = new MongoClient(process.env.MONGO_URL)
-    await client.connect()
-    db = client.db(process.env.DB_NAME)
-    await seedDefaults(db)
+  if (!clientPromise) {
+    clientPromise = (async () => {
+      const client = new MongoClient(process.env.MONGO_URL)
+      await client.connect()
+      const db = client.db(process.env.DB_NAME)
+      await seedDefaults(db)
+      return db
+    })().catch((e) => {
+      // reset on failure so the next request retries cleanly
+      clientPromise = undefined
+      throw e
+    })
   }
-  return db
+  return clientPromise
 }
 
 async function seedDefaults(db) {
